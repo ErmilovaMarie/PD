@@ -1,1 +1,10 @@
-﻿
+﻿* {
+	margin: 0;
+	padding: 0;
+}
+#news_form, #copmetiton_form,#invention_form, #interesting_form, #tasks_form, #inventor_form {
+	width: 80%;
+	margin: auto;
+	height: 100vh;
+	padding-top: 10vh;
+}

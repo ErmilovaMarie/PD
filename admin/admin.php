@@ -9,7 +9,6 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/style_admin.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,6 +16,18 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#news_form, #copmetiton_form,#invention_form, #interesting_form, #tasks_form, #inventor_form {
+			width: 80%;
+			margin: auto;
+			height: 100vh;
+			padding-top: 10vh;
+		}
+	</style>
   </head>
   <body>
 		<nav role="navigation" class="navbar navbar-default navbar-static-top" style="margin-bottom: 0px;"">
@@ -32,9 +43,13 @@
 			  <!-- Навигационное меню -->
 				<div id="navbarCollapse" class="collapse navbar-collapse menu">
 					<ul class="nav nav-pills">
-						<li class="active"><a href="/?page=news">Новости</a></li>
-						<li><a href="?page=competition">Конкурсы</a></li>
-						<li><a href="?page=interesting">Интересное</a></li>
+						<li><a href="../index.php">Выйти</a></li>
+						<li class=<?php if ($_GET['page'] == '' || $_GET['page'] == 'news') {echo "active";} ?>><a href="?page=news">Новости</a></li>
+						<li class="<?php if($_GET['page']=='competition') { echo 'active'; } ?>"><a  href="?page=competition">Конкурсы</a></li>
+						<li class="<?php if($_GET['page']=='invention') { echo 'active'; } ?>"><a  href="?page=invention">Изобретения</a></li>
+						<li class="<?php if($_GET['page']=='inventor') { echo 'active'; } ?>"><a  href="?page=inventor">Изобретатели</a></li>
+						<li class="<?php if($_GET['page']=='interesting') { echo 'active'; } ?>"><a href="?page=interesting">Интересное</a></li>
+						<li class="<?php if($_GET['page']=='tasks') { echo 'active'; } ?>"><a href="?page=tasks">Задачи</a></li>
 						<li><a href="?page="></a></li>
 				</ul>
 			</div>
@@ -43,7 +58,12 @@
 			$page = $_GET['page'];
 			switch ($page)
 			{
+				
 				case "competition": include "add_competition.php"; break;
+				case "invention": include "add_invention.php"; break;
+				case "interesting": include "add_interesting.php"; break;
+				case "inventor": include "add_inventor.php"; break;
+				case "tasks": include "add_tasks.php"; break;
 				default: include"add_news.php";
 			}	
 		?>
